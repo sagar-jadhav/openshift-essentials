@@ -1,17 +1,32 @@
-USER & PROJECT MANAGEMENT
+# User & Project Management
 
-- Create a project my-project
-- Create 3 Users, project-admin, project-developer
-- Assign admin role to project-admin in Project my-project
-- Assign developer role to project-developer to Project my-project
+## Objective
+- Create project my-project
+- Create 2 Users project-admin & project-developer
+- Assign admin role to user project-admin in project my-project
+- Assign developer role to user project-developer in project my-project
 
-1. yum install httpd-tools
+### Step 1: Set up Openshift environment
+Go to [Get Started](./get_started.md) section
 
-2. touch passwordfile 
+### Step 2: Set up utility
+Install httpd tools
+```
+yum install httpd-tools
+```
+Create file to store user & password
+```
+touch passwordfile 
+```
 
-3. oc projects
-
-4. oc new-project my-project
+### Step 3: List projects
+```
+oc projects
+```
+### Step 4: Create project
+```
+oc new-project my-project
+```
 
 5. oc create user project-admin
 
