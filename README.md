@@ -1,4 +1,4 @@
-# Learn Openshift Essentials with basic examples
+# Learn essential concepts of Openshift through basic examples
 
 ![Openshift Essentials](./images/thumbnail.png)
 
