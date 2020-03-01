@@ -2,7 +2,7 @@
 
 ## Objective
 - Create project **my-project**
-- Create 2 Users project-admin & project-developer
+- Create 2 Users **project-admin** & **project-developer**
 - Assign admin role to user project-admin in project my-project
 - Assign developer role to user project-developer in project my-project
 
@@ -62,7 +62,7 @@ oc get rolebindings
 
 ### Step 9: Deploy application 
 ```
-oc login -u project-developer -p pwd 2886795315-8443-simba02.environments.katacoda.com
+oc login -u project-developer -p pwd <SERVER_URL>
 ```
 ```
 oc new-app --name nginx -l app=demo --docker-image nginx:latest
@@ -93,7 +93,8 @@ oc create sa useroot
  oc get dc
 ```
 ```
- oc edit dc nginx
+oc patch dc/nginx --patch \
+'{"spec":{"template":{"spec":{"serviceAccountName": "useroot"}}}}'
 ```
 ```
 oc get pods --watch
