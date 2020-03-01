@@ -1,7 +1,7 @@
 # User & Project Management
 
 ## Objective
-- Create project my-project
+- Create project **my-project**
 - Create 2 Users project-admin & project-developer
 - Assign admin role to user project-admin in project my-project
 - Assign developer role to user project-developer in project my-project
@@ -28,46 +28,84 @@ oc projects
 oc new-project my-project
 ```
 
-5. oc create user project-admin
+### Step 5: Create users
+```
+oc create user project-admin
+```
+```
+htpasswd -b passwordfile project-admin pwd
+```
+```
+oc create user project-developer
+```
+```
+htpasswd -b passwordfile project-developer pwd
+```
 
-6. htpasswd -b passwordfile project-admin pwd
+### Step 6: Add admin role to user
+```
+oc policy add-role-to-user admin project-admin
+```
 
-7. oc create user project-developer
+### Step 7: Add developer role to user
+```
+oc login -u project-admin -p pwd <SERVER_URL>
+```
+```
+oc policy add-role-to-user edit project-developer
+```
 
-8. htpasswd -b passwordfile project-developer pwd
+### Step 8: List role bindings
+```
+oc get rolebindings
+```
 
-9. oc policy add-role-to-user admin project-admin
+### Step 9: Deploy application 
+```
+oc login -u project-developer -p pwd 2886795315-8443-simba02.environments.katacoda.com
+```
+```
+oc new-app --name nginx -l app=demo --docker-image nginx:latest
+```
 
-10. oc login -u project-admin -p pwd 2886795315-8443-simba02.environments.katacoda.com
+### Step 10: List pods
+```
+oc get pods
+```
 
-11. oc policy add-role-to-user edit project-developer
+### Step 11: View application logs
+```
+oc logs <POD_NAME>
+```
 
-12. oc get rolebindings
+### Step 12: Create service account
+```
+oc create sa useroot
+```
 
-13. oc login -u project-developer -p pwd 2886795315-8443-simba02.environments.katacoda.com
+### Step 13: Add scc anyuid to service account
+```
+ oc adm policy add-scc-to-user anyuid -z useroot --as system:admin
+```
 
-14. oc new-app --name nginx -l app=demo --docker-image nginx:latest
+### Step 14: Patch DC with service account
+```
+ oc get dc
+```
+```
+ oc edit dc nginx
+```
+```
+oc get pods --watch
+```
 
-15. oc get pods
+### Step 15: Browse application
+```
+oc get pods -o wide
+```
+```
+curl http://<POD_IP>:80
+```
 
-16. oc logs <POD_NAME>
-
-17. oc create sa useroot
-
-18. oc adm policy add-scc-to-user anyuid -z useroot --as system:admin
-
-19. oc get dc
-
-20. oc edit dc nginx
-
-21. Add serviceAccountName: useroot
-
-22. oc get pods --watch
-
-23. oc get pods -o wide
-
-24. curl http://<POD_IP>:80
-
-oc login -u developer -p developer 2886795315-8443-simba02.environments.katacoda.com
 
 
