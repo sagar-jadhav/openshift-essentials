@@ -1,19 +1,41 @@
-SCALING AN Application
+# Scaling an Application
 
-- Scale up application using oc scale command
-- Scale up bt updating DC
-- Scale down
+## Objective
+- Scale up nginx application using **oc scale** command
+- Scale up nginx application by updating **DeploymentConfig**
+- Scale down nginx application using **oc scale** command
 
-1. oc get pods
+### Step 1: Deploy nginx application
+Refer [User & Project Management](./1_user_and_project_management.md) tutorial
 
-2. oc scale dc nginx --replicas=5
+### Step 2: List pods
+```
+oc get pods
+```
 
-3. oc get pods --watch
+### Step 3: Scale up nginx application using oc scale command
+```
+oc scale dc nginx --replicas=5
+```
+```
+oc get pods --watch
+```
 
-4. oc edit dc nginx
-
+### Step 4: Scale up nginx application by updating DeploymentConfig
+```
+oc edit dc nginx
+```
+```
 update replicas = 7
+```
+```
+oc get pods --watch
+```
 
-5. oc get pods --watch
-
-6. oc scale dc nginx --replicas=1
+### Step 5: Scale down nginx application using oc scale command
+```
+oc scale dc nginx --replicas=1
+```
+```
+oc get pods --watch
+```

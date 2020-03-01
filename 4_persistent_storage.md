@@ -1,35 +1,66 @@
-Persistent Storage
+# Persistent Storage
 
-- Deploy MongoDB App
-- Retrieve available PV's
-- Create PVC
-- Associate PVC to DC
-- Verify that data get stored in PV
-- Change the file
-- Browse the application
+## Objective
+- Deploy **Mongodb** Application
+- Create **PersistentVolumeClaim**
+- Assign **PersistentVolumeClaim** to **Mongodb** Application
+- Verify that data gets stored in Persistent Storage
 
-- getenforce
+### Step 1: Set up Openshift environment
+Refer [Getting Started](./get_started.md) tutorial
 
-- setenforce 0
+### Step 2: Update environment permissions
+```
+setenforce 0
+```
 
-- oc new-app --name mongo -l app=db --docker-image=centos/mongodb-36-centos7 -e MONGODB_ADMIN_PASSWORD=secret
+### Step 3: Deploy mongodb application
+```
+oc new-app --name mongo -l app=db --docker-image=centos/mongodb-36-centos7 -e MONGODB_ADMIN_PASSWORD=secret
+```
 
-- oc get pods
+### Step 4: List pods
+```
+oc get pods
+```
 
-- oc describe pod <POD_NAME>
+### Step 5: Describe pod
+```
+oc describe pod <POD_NAME>
+```
 
-4. oc set volume dc/mongo --add --name=<PVC_NAME> -t pvc --claim-size=10Gi  --overwrite
+### Step 6: Create PersistentVolumeClaim & assign it to mongodb application
+```
+oc set volume dc/mongo --add --name=<PVC_NAME> -t pvc --claim-size=10Gi  --overwrite --claim-mode="ReadWriteMany"
+```
+```
+Example: oc set volume dc/mongo --add --name=mongo-volume-1 -t pvc --claim-size=10Gi  --overwrite --claim-mode="ReadWriteMany"
+```
 
-e.g oc set volume dc/mongo --add --name=mongo-volume-1 -t pvc --claim-size=10Gi  --overwrite --claim-mode="ReadWriteMany"
+### Step 7: List PersistentVolumeClaims (PVC's)
+```
+oc get pvc
+```
 
-5. oc get pvc
+### Step 8: List PersistentVolumes (PV's)
+```
+oc get pv
+```
 
-6. oc get pv --system:admin
+### Step 9: Describe pod
+```
+oc describe pod <POD_NAME>
+```
 
-7. oc describe pod <POD_NAME>
+### Step 10: Describe PersistentVolume (PV)
+```
+oc describe pv <PV_NAME>
+```
 
-8. oc describe pv <PV_NAME> --as system:admin
-
-9. Go to PV location
-
-10. ls
+### Step 11: List files
+```
+Go to PV location
+```
+```
+ls
+```

@@ -7,7 +7,7 @@
 - Assign developer role to user project-developer in project my-project
 
 ### Step 1: Set up Openshift environment
-Go to [Get Started](./get_started.md) section
+Refer [Getting Started](./get_started.md) tutorial
 
 ### Step 2: Set up utility
 Install httpd tools

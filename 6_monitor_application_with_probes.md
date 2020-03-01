@@ -1,24 +1,32 @@
+# Monitor Application with Probes
 
-- Add Readiness & Liveness probe to application created using s2I
+## Objective
+- Add Readiness Probe to Node JS Application
+- Add Liveness Probe to Node JS Application
 
-- Go to OCP Dashboard
+### Step 1: Deploy nodejs application using s2i
+Refer [Application Deployment using S2I](./5_application_deployment_using_S2I.md) tutorial
 
-- Login with <DEVELOPER>
+### Step 2: Open dashobard
+![Step 2](./images/probe_1.JPG)
 
-- Go to Projects -> my-project
+### Step 3: Login with developer user
+![Step 3](./images/probe_2.JPG)
 
-- Go to Application -> nodejs
+### Step 4: Go to project my-project
+![Step 4](./images/probe_3.JPG)
 
-- Go to Deployment -> #2
+### Step 5: Go to application nodejs
+![Step 5](./images/probe_4.JPG)
 
-- Go to Actions -> Edit Health Checks
+### Step 6: Go to deployment
+![Step 6](./images/probe_5.JPG)
 
-- Add Readiness Probe
+### Step 7: Go to health checks
+![Step 7](./images/probe_6.JPG)
 
-/readyness
+### Step 8: Add readiness probe
+![Step 8](./images/probe_7.JPG)
 
-- Add Liveness Probe
-
-/liveness
-
-- Save
+### Step 9: Add liveness probe & save
+![Step 9](./images/probe_8.JPG)
