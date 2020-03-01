@@ -1,4 +1,4 @@
-# Learn essential concepts of Openshift through basic examples
+# Learn essential concepts of Openshift through basic tutorials
 
 ![Openshift Essentials](./images/thumbnail.png)
 
@@ -15,7 +15,7 @@
 
 ## Contributing
 
-Pull requests are welcome. I will appreciate any help on either enhancing existing example or addition of new example.
+Pull requests are welcome. I will appreciate any help on either enhancing existing tutprial or addition of new tutorial.
 
 1. Fork the repo on GitHub
 2. Clone the project to your own machine
