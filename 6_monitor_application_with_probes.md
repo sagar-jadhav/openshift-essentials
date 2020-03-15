@@ -11,7 +11,7 @@ Refer [Application Deployment using S2I](./5_application_deployment_using_S2I.md
 ![Step 2](./images/probe_1.JPG)
 
 ### Step 3: Login with developer user
-![Step 3](./images/probe_2.JPG)
+![Step 3](./images/probe_2.JFIF)
 
 ### Step 4: Go to project my-project
 ![Step 4](./images/probe_3.JPG)
